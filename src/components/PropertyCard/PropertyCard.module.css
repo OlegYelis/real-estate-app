@@ -1,0 +1,180 @@
+.card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 364px;
+
+  border-radius: 16px;
+
+  background-color: #ffffff;
+
+  text-decoration: none;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: scale(1.01);
+  box-shadow: 0px 0px 15px 0px var(--txt-secondary-color);
+}
+
+.card__info {
+  position: absolute;
+  top: 24px;
+  left: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  font-size: 12px;
+  color: var(--txt-light-color);
+
+  padding: 8px 15px;
+  background-color: #535456;
+
+  border-radius: 12px;
+}
+
+.card__sale span {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background-color: var(--btn-primary-color);
+}
+
+.favorite__btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  background-color: #f1f6fa;
+}
+
+.favorite__btn:hover {
+  background-color: #e2e7eb;
+}
+
+.favorite__icon {
+  fill: var(--txt-primary-color);
+}
+
+.card__image {
+  position: relative;
+  height: 328px;
+  width: 100%;
+
+  border-radius: 16px 16px 0 0;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.price__wrap {
+  perspective: 100px;
+  display: inline-block;
+  width: 200px;
+  height: 55px;
+
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+
+  transform: translate(-50%, 0);
+}
+
+.price__wrap:before {
+  transform: rotateX(40deg);
+  transform-origin: 50% 100%;
+  border-radius: 10px 10px 0 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: #ffffff;
+  content: "";
+}
+
+.card__price {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--txt-primary-color);
+
+  padding: 25px 0 0;
+  text-align: center;
+  position: relative;
+}
+
+.card__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 24px;
+}
+
+.card__address {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--txt-secondary-color);
+
+  text-align: center;
+
+  margin-bottom: 20px;
+}
+
+.descr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  box-sizing: border-box;
+
+  padding: 16px 5px;
+  border-radius: 12px;
+
+  width: 100%;
+
+  background-color: #0d0e10;
+}
+
+.descr__txt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  color: var(--txt-light-color);
+}
+
+.descr__icon {
+  margin-right: 5px;
+
+  fill: var(--txt-light-color);
+}

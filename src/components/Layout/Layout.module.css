@@ -1,5 +1,8 @@
 .header {
-  position: relative;
+  background-color: #3c5cda;
+}
+
+.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,8 +11,6 @@
 
   margin: 0 auto;
   padding: 10px 0;
-
-  z-index: 2;
 }
 
 .logo {
