@@ -1,12 +1,19 @@
-import { NavLink, Link, Outlet } from "react-router-dom";
+import { NavLink, Link, Outlet, useLocation } from "react-router-dom";
 import { Button } from "../Button/Button";
 import styles from "./Layout.module.css";
 
 export const Layout = () => {
+  const location = useLocation();
+
   return (
     <>
       <header className={styles.header}>
-        <Link to="/" className={styles.logo}>
+        <Link
+          to="/"
+          className={`${styles.logo} ${
+            location.pathname === "/" ? styles.logo__light : styles.logo__dark
+          }`}
+        >
           HomeNest
         </Link>
 

@@ -1,23 +1,36 @@
 .header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   max-width: 1140px;
+
   margin: 0 auto;
   padding: 10px 0;
+
+  z-index: 2;
 }
 
 .logo {
-  color: var(--txt-primary-color);
   font-size: 22px;
   font-weight: 700;
   text-decoration: none;
+}
+
+.logo__light {
+  color: var(--txt-light-color);
+}
+
+.logo__dark {
+  color: var(--txt-primary-color);
 }
 
 .nav {
   background-color: #0d0e10;
   border-radius: 16px;
   padding: 14px 16px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,7 +42,9 @@
   color: var(--txt-light-color);
   text-decoration: none;
   border-radius: 8px;
+
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   display: flex;
   align-items: center;
   justify-content: center;

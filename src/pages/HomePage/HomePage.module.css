@@ -1,0 +1,76 @@
+.hero {
+  position: relative;
+  top: -101px;
+  background-image: url("/images/hero_bg.webp");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 1440px;
+
+  padding: 220px 0 290px 0;
+
+  z-index: 1;
+
+  background-color: #3c5cda;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__title {
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--txt-light-color);
+  line-height: 1.2;
+
+  max-width: 436px;
+  margin-bottom: 56px;
+
+  text-transform: capitalize;
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  background-color: var(--bg-primary-color);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.hero__input {
+  border: none;
+  background: transparent;
+  outline: none;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  color: var(--txt-primary-color);
+  width: 340px;
+}
+
+.hero__input::placeholder {
+  color: #b8b8b8;
+}
+
+.hero__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 18px;
+}
+
+.hero__icon {
+  fill: var(--txt-primary-color);
+}
