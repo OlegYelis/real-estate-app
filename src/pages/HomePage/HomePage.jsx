@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { Button } from "../../components/Button/Button";
 import { PropertyCard } from "../../components/PropertyCard/PropertyCard";
 import styles from "./HomePage.module.css";
+import { typeCardsInfo } from "../../helpers/typeCardsInfo";
+import { TypeCard } from "../../components/TypeCard/TypeCard";
 
 export const HomePage = () => {
   return (
@@ -51,6 +53,30 @@ export const HomePage = () => {
           <Link to="/property" className={styles.featured__btn}>
             Дивитись більше
           </Link>
+        </div>
+      </section>
+
+      <section className={styles.types}>
+        <div className={styles.container}>
+          <h2 className={styles.types__title}>
+            Різноманітність Житлових Просторів
+          </h2>
+          <p className={styles.types__descr}>
+            Знайдіть ідеальне місце для життя серед колекції нерухомості
+          </p>
+
+          <div className={styles.types__wrapper}>
+            {typeCardsInfo.map((item) => (
+              <TypeCard
+                key={item.id}
+                img={item.img}
+                alt={item.alt}
+                title={item.title}
+                description={item.description}
+                linkTo={item.linkTo}
+              />
+            ))}
+          </div>
         </div>
       </section>
     </>
