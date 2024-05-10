@@ -1,0 +1,175 @@
+.cities {
+  padding: 40px 0;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.cities__header {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 40px;
+
+  margin-bottom: 34px;
+
+  z-index: 2;
+}
+
+.cities__title {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.2;
+  max-width: 310px;
+
+  color: var(--txt-primary-color);
+}
+
+.cities__descr {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+
+  color: var(--txt-secondary-color);
+
+  max-width: 600px;
+}
+
+.cities__btn {
+  display: block;
+  background-color: var(--btn-primary-color);
+  border: none;
+  border-radius: 12px;
+
+  width: fit-content;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--txt-primary-color);
+
+  cursor: pointer;
+  padding: 12px 24px;
+  margin: 0 auto;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  text-decoration: none;
+}
+
+.cities__btn:hover {
+  background-color: var(--btn-hover-color);
+}
+
+.cities__wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  margin-bottom: 34px;
+}
+
+.cities__link {
+  border-radius: 16px;
+  padding: 24px;
+  box-sizing: border-box;
+  height: 424px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  color: var(--txt-light-color);
+
+  text-decoration: none;
+}
+
+.cities__link span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+
+  background-color: rgba(37, 37, 37, 0.733);
+
+  padding: 20px 16px;
+
+  border-radius: 12px;
+
+  margin-top: 16px;
+
+  max-width: 400px;
+}
+
+.cities_row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 24px;
+}
+
+.cities__kyiv {
+  width: 100%;
+  background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.1)
+    ),
+    url("/images/kyiv_bg.webp");
+}
+
+.cities__lviv {
+  width: 66%;
+  max-width: 752px;
+  background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.1)
+    ),
+    url("/images/lviv_bg.webp");
+}
+
+.cities__odesa {
+  width: 32%;
+  max-width: 364px;
+  background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.1)
+    ),
+    url("/images/odesa_bg.webp");
+}
+
+.cities__kharkiv,
+.cities__dnipro {
+  width: 50%;
+  max-width: 558px;
+}
+
+.cities__kharkiv {
+  background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ),
+    url("/images/kharkiv_bg.webp");
+}
+
+.cities__dnipro {
+  background-image: url("/images/dnipro_bg.webp");
+}

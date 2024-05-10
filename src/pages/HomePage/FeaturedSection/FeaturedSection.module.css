@@ -1,11 +1,11 @@
-.container {
-  max-width: 1140px;
-  margin: 0 auto;
-}
-
 .featured {
   position: relative;
   padding: 80px 0 40px;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .featured__header {
