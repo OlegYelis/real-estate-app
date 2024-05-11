@@ -1,0 +1,35 @@
+.header {
+  background-color: #3c5cda;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1140px;
+
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.logo__light {
+  color: var(--txt-light-color);
+}
+
+.logo__dark {
+  color: var(--txt-primary-color);
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
