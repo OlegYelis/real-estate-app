@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "../Button/Button";
 import styles from "./Header.module.css";
 import { NavBar } from "../NavBar/NavBar";
 
@@ -20,12 +19,12 @@ export const Header = () => {
 
         <NavBar position="header" />
 
-        <Button className={styles.btn}>
+        <Link to="/auth" className={styles.btn}>
           <svg className={styles.btn__icon} width="18px" height="18px">
             <use href="/images/icons.svg#icon-user-circle"></use>
           </svg>
           Вхід
-        </Button>
+        </Link>
       </div>
     </header>
   );

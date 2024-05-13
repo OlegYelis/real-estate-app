@@ -6,7 +6,7 @@ export const typeCardsInfo = [
     title: "Багатосімейні",
     description:
       "Широкий спектр варіантів для вашої сім'ї та особистого простору.",
-    linkTo: "",
+    linkTo: "?prop_type=multi",
   },
   {
     id: 2,
@@ -14,7 +14,7 @@ export const typeCardsInfo = [
     alt: "town Houses",
     title: "Міські",
     description: "Різні можливості для комфортного міського життя.",
-    linkTo: "",
+    linkTo: "?prop_type=urban",
   },
   {
     id: 3,
@@ -22,7 +22,7 @@ export const typeCardsInfo = [
     alt: "condos",
     title: "Кондомініуми",
     description: "Сучасні рішення для вашого дому із забезпеченням зручностей.",
-    linkTo: "",
+    linkTo: "?prop_type=condos",
   },
   {
     id: 4,
@@ -30,7 +30,7 @@ export const typeCardsInfo = [
     alt: "duplex",
     title: "Дуплекси",
     description: "Ідеальні варіанти для тих, хто шукає простір і приватність.",
-    linkTo: "",
+    linkTo: "?prop_type=multi",
   },
   {
     id: 5,
@@ -38,7 +38,7 @@ export const typeCardsInfo = [
     alt: "single Family",
     title: "Односімейні",
     description: "Привабливі домівки для індивідуального проживання.",
-    linkTo: "",
+    linkTo: "?prop_type=single",
   },
   {
     id: 6,
@@ -46,6 +46,6 @@ export const typeCardsInfo = [
     alt: "mobile",
     title: "Мобільні",
     description: "Гнучкі рішення для життя на колесах з усіма зручностями.",
-    linkTo: "",
+    linkTo: "?prop_type=mobile",
   },
 ];

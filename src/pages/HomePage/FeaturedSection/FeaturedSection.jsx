@@ -24,7 +24,7 @@ export const FeaturedSection = () => {
           <PropertyCard />
         </div>
 
-        <Link to="/property" className={styles.featured__btn}>
+        <Link to="/search" className={styles.featured__btn}>
           Дивитись більше
         </Link>
       </div>
