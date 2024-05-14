@@ -10,7 +10,12 @@ export const HeroSection = () => {
           <br /> Майбутній Комфорт і Щастя Тут
         </h1>
 
-        <div className={styles.hero__actions}>
+        <form className={styles.hero__actions}>
+          <select name="deal_type" className={styles.select}>
+            <option value="sell">Купити</option>
+            <option value="rent">Орендувати</option>
+          </select>
+
           <input
             className={styles.hero__input}
             type="text"
@@ -21,7 +26,7 @@ export const HeroSection = () => {
               <use href="/images/icons.svg#icon-search"></use>
             </svg>
           </Button>
-        </div>
+        </form>
       </div>
     </section>
   );

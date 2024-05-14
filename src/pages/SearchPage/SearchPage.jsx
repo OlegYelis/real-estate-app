@@ -1,3 +1,12 @@
+import { Filters } from "./Filters/Filters";
+import styles from "./SearchPage.module.css";
+
 export const SearchPage = () => {
-  return <>Search Page</>;
+  return (
+    <>
+      <Filters />
+
+      <div className={styles.container}></div>
+    </>
+  );
 };

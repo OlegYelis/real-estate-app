@@ -30,7 +30,7 @@ export const typeCardsInfo = [
     alt: "duplex",
     title: "Дуплекси",
     description: "Ідеальні варіанти для тих, хто шукає простір і приватність.",
-    linkTo: "?prop_type=multi",
+    linkTo: "?prop_type=duplex",
   },
   {
     id: 5,

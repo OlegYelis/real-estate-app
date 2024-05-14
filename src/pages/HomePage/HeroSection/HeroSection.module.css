@@ -41,9 +41,26 @@
   justify-content: center;
   gap: 16px;
 
-  background-color: var(--bg-primary-color);
+  background-color: #ffffff;
   border-radius: 16px;
   padding: 16px;
+}
+
+.select {
+  background-color: #fff3d1;
+  border: none;
+  outline: none;
+
+  font-family: var(--font-family);
+  font-size: 14px;
+  color: var(--txt-primary-color);
+  padding: 15px 2px 15px 10px;
+
+  border-right: 10px solid #fff3d1;
+
+  cursor: pointer;
+
+  border-radius: 12px;
 }
 
 .hero__input {
