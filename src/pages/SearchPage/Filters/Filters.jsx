@@ -12,17 +12,45 @@ import {
   selectStylesRoom,
   selectStylesSort,
 } from "../../../helpers/stylesSelect";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Filters.module.css";
+import { useEffect, useState } from "react";
 
 export const Filters = () => {
+  const navigate = useNavigate();
+  const [dealType, setDealType] = useState("sell");
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  useEffect(() => {
+    setDealType(searchParams.get("deal_type"));
+  }, [location]);
+
+  const handleFormSubmin = (evt) => {
+    evt.preventDefault();
+
+    const formData = new FormData(evt.target);
+    const filteredParams = {};
+
+    formData.forEach((value, key) => {
+      if (value) {
+        filteredParams[key] = value;
+      }
+    });
+
+    const params = new URLSearchParams(filteredParams);
+    navigate({ search: params.toString() });
+  };
+
   return (
     <div className={styles.container}>
-      <form className={styles.filters}>
+      <form className={styles.filters} onSubmit={handleFormSubmin}>
         <div className={styles.filters__header}>
           <input
             className={`${styles.filters__input} ${styles.input__search}`}
             type="text"
-            placeholder="Місто, Адреса, Поштовий індекс"
+            placeholder="Область, Місто, Адреса"
             name="input"
           />
 
@@ -31,23 +59,21 @@ export const Filters = () => {
             type="text"
             placeholder="Ціна від:"
             name="price_min"
-            min="0"
           />
           <input
             className={`${styles.filters__input} ${styles.input__price}`}
             type="text"
             placeholder="Ціна до:"
             name="price_max"
-            min="0"
           />
         </div>
-
-        {/* Ціна */}
 
         <div className={styles.filters__footer}>
           <ReactSelect
             isSearchable={false}
-            defaultValue={dealTypeOptions[0]}
+            value={
+              dealType === "sell" ? dealTypeOptions[0] : dealTypeOptions[1]
+            }
             name="deal_type"
             options={dealTypeOptions}
             styles={selectStylesDeal}

@@ -1,8 +1,29 @@
 import { Link } from "react-router-dom";
 import { PropertyCard } from "../../../components/PropertyCard/PropertyCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import styles from "./FeaturedSection.module.css";
 
 export const FeaturedSection = () => {
+  const [announcements, setAnnouncements] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchAnnouncements = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/search`);
+        setAnnouncements(response.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAnnouncements();
+  }, []);
+
   return (
     <section className={styles.featured}>
       <p className={styles["featured__title--bg"]}>Популярні</p>
@@ -18,11 +39,17 @@ export const FeaturedSection = () => {
           </p>
         </div>
 
-        <div className={styles.card__wrapper}>
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-        </div>
+        {error ? <p>Error: {error}</p> : <></>}
+
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <div className={styles.card__wrapper}>
+            {announcements.map((item) => {
+              return <PropertyCard key={item.announcement_id} {...item} />;
+            })}
+          </div>
+        )}
 
         <Link to="/search" className={styles.featured__btn}>
           Дивитись більше

@@ -19,7 +19,7 @@ export const HeroSection = () => {
           <input
             className={styles.hero__input}
             type="text"
-            placeholder="Місто, Адреса, Поштовий індекс"
+            placeholder="Область, Місто, Адреса"
           />
           <Button className={styles.hero__btn}>
             <svg className={styles.hero__icon} width="18px" height="18px">
