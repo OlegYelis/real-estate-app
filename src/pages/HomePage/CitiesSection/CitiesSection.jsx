@@ -17,7 +17,7 @@ export const CitiesSection = () => {
 
         <div className={styles.cities__wrap}>
           <Link
-            to="/search?input=київ"
+            to="/search?input=Київ"
             className={`${styles.cities__link} ${styles.cities__kyiv}`}
           >
             Київ
@@ -28,7 +28,7 @@ export const CitiesSection = () => {
           </Link>
           <div className={styles.cities_row}>
             <Link
-              to="/search?input=львів"
+              to="/search?input=Львів"
               className={`${styles.cities__link} ${styles.cities__lviv}`}
             >
               Львів
@@ -38,7 +38,7 @@ export const CitiesSection = () => {
               </span>
             </Link>
             <Link
-              to="/search?input=одеса"
+              to="/search?input=Одеса"
               className={`${styles.cities__link} ${styles.cities__odesa}`}
             >
               Одеса
@@ -50,7 +50,7 @@ export const CitiesSection = () => {
           </div>
           <div className={styles.cities_row}>
             <Link
-              to="/search?input=харків"
+              to="/search?input=Харків"
               className={`${styles.cities__link} ${styles.cities__kharkiv}`}
             >
               Харків
@@ -60,7 +60,7 @@ export const CitiesSection = () => {
               </span>
             </Link>
             <Link
-              to="/search?input=dnipro"
+              to="/search?input=Дніпро"
               className={`${styles.cities__link} ${styles.cities__dnipro}`}
             >
               Дніпро

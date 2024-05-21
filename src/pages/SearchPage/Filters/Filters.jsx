@@ -18,13 +18,25 @@ import { useEffect, useState } from "react";
 
 export const Filters = () => {
   const navigate = useNavigate();
-  const [dealType, setDealType] = useState("sell");
+  const [dealType, setDealType] = useState("");
+  const [searchStr, setSearchStr] = useState("");
+  const [propType, setPropType] = useState();
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
 
   useEffect(() => {
-    setDealType(searchParams.get("deal_type"));
+    searchParams.get("deal_type")
+      ? setDealType(searchParams.get("deal_type"))
+      : setDealType("sell");
+
+    searchParams.get("input")
+      ? setSearchStr(searchParams.get("input"))
+      : setSearchStr("");
+
+    searchParams.get("prop_type")
+      ? setPropType(searchParams.get("prop_type"))
+      : setPropType("");
   }, [location]);
 
   const handleFormSubmin = (evt) => {
@@ -43,6 +55,17 @@ export const Filters = () => {
     navigate({ search: params.toString() });
   };
 
+  const handleInputValue = (evt) => {
+    setDealType(evt.value);
+  };
+
+  const handlePropTypeValue = (evt) => {
+    if (evt !== null) {
+      return setPropType(evt.value);
+    }
+    return setPropType(null);
+  };
+
   return (
     <div className={styles.container}>
       <form className={styles.filters} onSubmit={handleFormSubmin}>
@@ -52,6 +75,8 @@ export const Filters = () => {
             type="text"
             placeholder="Область, Місто, Адреса"
             name="input"
+            value={searchStr}
+            onChange={(evt) => setSearchStr(evt.target.value)}
           />
 
           <input
@@ -71,9 +96,8 @@ export const Filters = () => {
         <div className={styles.filters__footer}>
           <ReactSelect
             isSearchable={false}
-            value={
-              dealType === "sell" ? dealTypeOptions[0] : dealTypeOptions[1]
-            }
+            value={dealTypeOptions.find((option) => option.value === dealType)}
+            onChange={handleInputValue}
             name="deal_type"
             options={dealTypeOptions}
             styles={selectStylesDeal}
@@ -83,6 +107,12 @@ export const Filters = () => {
             isClearable={true}
             isSearchable={false}
             placeholder="Тип нерухомості"
+            value={
+              propType
+                ? propTypeOptions.find((option) => option.value === propType)
+                : null
+            }
+            onChange={handlePropTypeValue}
             name="prop_type"
             options={propTypeOptions}
             styles={selectStylesProp}
