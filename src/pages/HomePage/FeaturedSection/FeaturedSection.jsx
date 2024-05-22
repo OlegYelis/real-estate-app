@@ -12,7 +12,9 @@ export const FeaturedSection = () => {
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/search`);
+        const response = await axios.get(
+          `http://localhost:3000/random-announcements`
+        );
         setAnnouncements(response.data);
       } catch (err) {
         setError(err.message);
@@ -29,9 +31,7 @@ export const FeaturedSection = () => {
       <p className={styles["featured__title--bg"]}>Популярні</p>
       <div className={styles.container}>
         <div className={styles.featured__header}>
-          <h2 className={styles.featured__title}>
-            Популярні об&#39;єкти поблизу
-          </h2>
+          <h2 className={styles.featured__title}>Популярні об&#39;єкти</h2>
           <p className={styles.featured__descr}>
             Ознайомтеся з нашою колекцією відібраних об&#39;єктів нерухомості,
             які вирізняються своїми винятковими характеристиками та чудовим

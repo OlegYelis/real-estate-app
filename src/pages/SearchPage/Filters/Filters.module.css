@@ -9,6 +9,10 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
+
+  background-color: #3c5cda;
+  padding: 15px 0;
+  border-radius: 16px;
 }
 
 .filters__header {

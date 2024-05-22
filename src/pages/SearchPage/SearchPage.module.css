@@ -1,10 +1,32 @@
 .container {
   max-width: 1140px;
   margin: 40px auto;
+}
 
+.not_found {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  text-align: center;
+
+  color: var(--txt-primary-color);
+
+  text-transform: capitalize;
+
+  margin-bottom: 12.5vh;
+}
+
+.counter {
+  width: fit-content;
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+
+.announcements__wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
   gap: 24px;
 
   flex-wrap: wrap;

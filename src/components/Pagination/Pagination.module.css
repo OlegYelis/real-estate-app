@@ -1,0 +1,36 @@
+.pagination {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.pageButton {
+  background-color: transparent;
+  border: 2px solid var(--btn-primary-color);
+  border-radius: 12px;
+
+  min-width: 64px;
+  height: 60px;
+
+  padding: 0 12px;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--txt-primary-color);
+
+  cursor: pointer;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pageButton:hover {
+  background-color: var(--btn-primary-color);
+}
+
+.pageButton.active {
+  background-color: var(--btn-primary-color);
+}
