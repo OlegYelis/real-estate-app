@@ -73,6 +73,8 @@
 
   color: var(--txt-primary-color);
   width: 340px;
+
+  padding: 10px 0;
 }
 
 .hero__input::placeholder {

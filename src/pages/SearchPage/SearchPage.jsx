@@ -56,7 +56,7 @@ export const SearchPage = () => {
       <Filters />
 
       <div className={styles.container}>
-        {announcementsCounter === 0 ? (
+        {announcementsCounter === "0" ? (
           <p className={styles.not_found}>
             Нажаль за вашим запитом оголошень не знайдено
           </p>

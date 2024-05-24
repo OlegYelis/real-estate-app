@@ -65,15 +65,15 @@ export const NavBar = ({ position }) => {
         Продати
       </NavLink>
       <NavLink
-        to="/about"
+        to="/favorites"
         className={({ isActive }) =>
           `${styles.nav__link} ${isActive && styles.active}`
         }
       >
         <svg className={styles.nav__icon} width={iconSize} height={iconSize}>
-          <use href="/images/icons.svg#icon-users-group"></use>
+          <use href="/images/icons.svg#icon-heart"></use>
         </svg>
-        Про нас
+        Обрані
       </NavLink>
     </nav>
   );

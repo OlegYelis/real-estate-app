@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Button } from "../Button/Button";
 import moment from "moment";
+import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
 import styles from "./PropertyCard.module.css";
 
 export const PropertyCard = (props) => {
@@ -15,24 +15,28 @@ export const PropertyCard = (props) => {
     price,
     regionname,
     cityname,
+    announcementtype_id,
   } = props;
 
   return (
-    <Link to={`/search/${announcement_id}`} className={styles.card}>
+    <Link to={`/property/${announcement_id}`} className={styles.card}>
       <div
         className={styles.card__image}
         style={{
           backgroundImage: `url('${images[0]}')`,
         }}
       >
-        <p className={`${styles.card__info} ${styles.card__sale}`}>
+        <p
+          className={`${styles.card__info} ${
+            announcementtype_id === 1 ? styles.card__sale : styles.card__rent
+          }`}
+        >
           <span></span> {moment(creationdate).format("DD-MM-YYYY")}
         </p>
-        <Button className={styles.favorite__btn}>
-          <svg className={styles.favorite__icon} width="18px" height="18px">
-            <use href="/images/icons.svg#icon-heart"></use>
-          </svg>
-        </Button>
+        <FavoriteButton
+          announcementId={announcement_id}
+          className={styles.favorite__btn}
+        />
         <div className={styles.price__wrap}>
           <p className={styles.card__price}>${Math.floor(price)}</p>
         </div>

@@ -42,40 +42,25 @@
   border-radius: 12px;
 }
 
-.card__sale span {
+.card__info span {
   width: 8px;
   height: 8px;
 
   border-radius: 50%;
+}
 
+.card__sale span {
   background-color: var(--btn-primary-color);
+}
+
+.card__rent span {
+  background-color: #007db5;
 }
 
 .favorite__btn {
   position: absolute;
   top: 16px;
   right: 16px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 48px;
-  height: 48px;
-
-  padding: 0;
-
-  border-radius: 50%;
-
-  background-color: #f1f6fa;
-}
-
-.favorite__btn:hover {
-  background-color: #e2e7eb;
-}
-
-.favorite__icon {
-  fill: var(--txt-primary-color);
 }
 
 .card__image {

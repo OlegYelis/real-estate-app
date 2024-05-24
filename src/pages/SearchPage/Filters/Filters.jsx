@@ -13,8 +13,8 @@ import {
   selectStylesSort,
 } from "../../../helpers/stylesSelect";
 import { useLocation, useNavigate } from "react-router-dom";
-import styles from "./Filters.module.css";
 import { useEffect, useState } from "react";
+import styles from "./Filters.module.css";
 
 export const Filters = () => {
   const navigate = useNavigate();

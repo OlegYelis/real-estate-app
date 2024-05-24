@@ -5,6 +5,8 @@ import { HomePage } from "./pages/HomePage/HomePage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { SearchPage } from "./pages/SearchPage/SearchPage";
 import { Layout } from "./components/Layout/Layout";
+import { PropertyPage } from "./pages/PropertyPage/PropertyPage";
+import { FavoritesPage } from "./pages/FavoritesPage/FavoritesPage";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -19,6 +21,8 @@ const router = createBrowserRouter([
       { path: "/search", element: <SearchPage /> },
       { path: "/profile", element: <ProfilePage /> },
       { path: "/auth", element: <ProfilePage /> },
+      { path: "/favorites", element: <FavoritesPage /> },
+      { path: "/property/:id", element: <PropertyPage /> },
     ],
   },
   { path: "*", element: <SearchPage /> },

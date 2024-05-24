@@ -1,0 +1,31 @@
+.container {
+  max-width: 1140px;
+  margin: 20px auto 40px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  color: var(--txt-light-color);
+
+  text-transform: capitalize;
+
+  text-align: center;
+
+  margin-bottom: 30px;
+
+  background-color: #3c5cda;
+  padding: 15px 0;
+  border-radius: 16px;
+}
+
+.announcements__wrapper {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 24px;
+
+  flex-wrap: wrap;
+}
