@@ -19,11 +19,11 @@ export const Header = () => {
 
         <NavBar position="header" />
 
-        <Link to="/auth" className={styles.btn}>
+        <Link to="/profile" className={styles.btn}>
           <svg className={styles.btn__icon} width="18px" height="18px">
             <use href="/images/icons.svg#icon-user-circle"></use>
           </svg>
-          Вхід
+          Профіль
         </Link>
       </div>
     </header>

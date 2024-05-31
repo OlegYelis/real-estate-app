@@ -23,7 +23,7 @@ export const PropertyCard = (props) => {
       <div
         className={styles.card__image}
         style={{
-          backgroundImage: `url('${images[0]}')`,
+          backgroundImage: `url(' ${images ? images[0] : "none"}')`,
         }}
       >
         <p
@@ -48,27 +48,57 @@ export const PropertyCard = (props) => {
           {address}
         </p>
         <div className={styles.descr}>
-          <p className={styles.descr__txt}>
-            <svg className={styles.descr__icon} width="18px" height="18px">
-              <use href="/images/icons.svg#icon-bed"></use>
-            </svg>
-            {beds} {beds > 1 ? "ліжка" : "ліжко"}
-          </p>
-          <p className={styles.descr__txt}>
-            <svg className={styles.descr__icon} width="18px" height="18px">
-              <use href="/images/icons.svg#icon-bath"></use>
-            </svg>
-            {baths} {baths > 1 ? "ванни" : "ванна"}
-          </p>
-          <p className={styles.descr__txt}>
-            <svg className={styles.descr__icon} width="18px" height="18px">
-              <use href="/images/icons.svg#icon-area"></use>
-            </svg>
-            {Math.floor(area)} м
-            <sup>
-              <small>2</small>
-            </sup>
-          </p>
+          {baths || beds || area ? (
+            <>
+              {beds ? (
+                <p className={styles.descr__txt}>
+                  <svg
+                    className={styles.descr__icon}
+                    width="18px"
+                    height="18px"
+                  >
+                    <use href="/images/icons.svg#icon-bed"></use>
+                  </svg>
+                  {beds} {beds > 1 ? "ліжка" : "ліжко"}
+                </p>
+              ) : (
+                <></>
+              )}
+              {baths ? (
+                <p className={styles.descr__txt}>
+                  <svg
+                    className={styles.descr__icon}
+                    width="18px"
+                    height="18px"
+                  >
+                    <use href="/images/icons.svg#icon-bath"></use>
+                  </svg>
+                  {baths} {baths > 1 ? "ванни" : "ванна"}
+                </p>
+              ) : (
+                <></>
+              )}
+              {area ? (
+                <p className={styles.descr__txt}>
+                  <svg
+                    className={styles.descr__icon}
+                    width="18px"
+                    height="18px"
+                  >
+                    <use href="/images/icons.svg#icon-area"></use>
+                  </svg>
+                  {Math.floor(area)} м
+                  <sup>
+                    <small>2</small>
+                  </sup>
+                </p>
+              ) : (
+                <></>
+              )}
+            </>
+          ) : (
+            <p className={styles.noData}>Власник не надав дані</p>
+          )}
         </div>
       </div>
     </Link>

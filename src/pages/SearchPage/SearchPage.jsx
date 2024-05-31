@@ -3,6 +3,7 @@ import { Filters } from "./Filters/Filters";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
+import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import styles from "./SearchPage.module.css";
 
@@ -15,6 +16,7 @@ export const SearchPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
     const searchParams = new URLSearchParams(location.search);
 
     const fetchAnnouncements = async () => {
@@ -35,7 +37,7 @@ export const SearchPage = () => {
       }
     };
 
-    fetchAnnouncements();
+    setTimeout(fetchAnnouncements, 500);
   }, [location.search]);
 
   const handlePageChange = (newPage) => {
@@ -67,7 +69,16 @@ export const SearchPage = () => {
         )}
 
         {loading ? (
-          <p>Loading...</p>
+          <div className={styles.loading}>
+            <ThreeDots
+              visible={loading}
+              height="100"
+              width="100"
+              color="#3c5cda"
+              radius="9"
+              ariaLabel="three-dots-loading"
+            />
+          </div>
         ) : (
           <div className={styles.announcements__wrapper}>
             {announcements.map((item) => (

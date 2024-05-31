@@ -3,6 +3,15 @@
   margin: 20px auto 40px;
 }
 
+.loading {
+  width: 100%;
+  height: 40.8vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .title {
   font-size: 36px;
   font-weight: 600;
@@ -19,6 +28,22 @@
   background-color: #3c5cda;
   padding: 15px 0;
   border-radius: 16px;
+}
+
+.notfound {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  color: var(--txt-primary-color);
+
+  text-transform: capitalize;
+
+  text-align: center;
+
+  margin-top: 20vh;
+
+  margin-bottom: 23.4vh;
 }
 
 .announcements__wrapper {

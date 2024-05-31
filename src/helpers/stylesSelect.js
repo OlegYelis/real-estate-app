@@ -77,3 +77,21 @@ export const selectStylesSort = {
     color: isSelected ? "#f4f4f4" : "#2a2a2a",
   }),
 };
+
+export const mainStyles = {
+  control: (styles) => ({
+    ...styles,
+    backgroundColor: "white",
+    border: "none",
+    width: "100%",
+    height: "64px",
+    borderRadius: "12px",
+    padding: "0 10px",
+    outline: "none",
+    color: "#2a2a2a",
+  }),
+  option: (styles, { isSelected }) => ({
+    ...styles,
+    color: isSelected ? "#f4f4f4" : "#2a2a2a",
+  }),
+};

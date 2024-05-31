@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { PropertyCard } from "../../components/PropertyCard/PropertyCard";
+import { ThreeDots } from "react-loader-spinner";
 import styles from "./FavoritesPage.module.css";
 
 export const FavoritesPage = () => {
@@ -28,21 +29,32 @@ export const FavoritesPage = () => {
       }
     };
 
-    fetchFavorites();
+    setTimeout(fetchFavorites, 200);
   }, []);
 
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
     <div className={styles.container}>
       <p className={styles.title}>Обрані оголошення</p>
-      {favorites.length === 0 ? (
-        <p>No favorite properties found</p>
+
+      {loading ? (
+        <div className={styles.loading}>
+          <ThreeDots
+            visible={loading}
+            height="100"
+            width="100"
+            color="#3c5cda"
+            radius="9"
+            ariaLabel="three-dots-loading"
+          />
+        </div>
+      ) : favorites.length === 0 ? (
+        <p className={styles.notfound}>у вас поки немає обраних оголошень</p>
       ) : (
         <div className={styles.announcements__wrapper}>
           {favorites.map((item) => (
-            <PropertyCard key={item.Announcement_ID} {...item} />
+            <PropertyCard key={item.announcement_id} {...item} />
           ))}
         </div>
       )}

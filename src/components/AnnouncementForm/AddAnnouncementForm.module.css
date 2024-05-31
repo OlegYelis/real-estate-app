@@ -1,0 +1,197 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 30px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+}
+
+.form__wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 24px;
+}
+
+.field_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 24px;
+
+  width: calc(100% - 12px);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 5px;
+}
+
+.field label {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--txt-primary-color);
+}
+
+.field input {
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--txt-primary-color);
+
+  padding: 21px 20px;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+}
+
+.textarea {
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--txt-primary-color);
+
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+
+  width: 259px !important;
+  height: 164px !important;
+
+  resize: none;
+}
+
+.field input::placeholder {
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: 400;
+  color: #c0c0c0;
+}
+
+.btn {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 50px;
+}
+
+.txt {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--txt-secondary-color);
+}
+
+.link {
+  font-size: 16px;
+  font-weight: 600;
+  color: #3c5cda;
+  text-decoration: none;
+}
+
+.invalid input {
+  outline: 2px solid rgb(245, 52, 52);
+}
+
+.invalid textarea {
+  outline: 2px solid rgb(245, 52, 52);
+}
+
+.customFileInput {
+  position: relative;
+  display: inline-block;
+}
+
+.imageInput {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.customInputLabel {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #ffffff;
+  border-radius: 16px;
+  cursor: pointer;
+
+  border: 2px solid var(--btn-primary-color);
+}
+
+.customInputLabel:hover {
+  background-color: var(--btn-primary-color); /* змінений колір при наведенні */
+}
+
+.uploadedImages {
+  width: 330px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.field p {
+  color: rgb(245, 52, 52);
+}
+
+.uploadedImageWrapper {
+  position: relative;
+  outline: 2px solid #3c5cda;
+  border-radius: 5px;
+}
+
+.uploadedImage {
+  position: relative;
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.deleteImageButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 25px;
+  height: 25px;
+
+  font-size: 20px;
+  border: none;
+  background-color: red;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.invalidSelect {
+  outline: 2px solid rgb(245, 52, 52);
+  border-radius: 12px;
+}

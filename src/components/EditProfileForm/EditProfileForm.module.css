@@ -1,0 +1,71 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 30px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 5px;
+}
+
+.field label {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--txt-primary-color);
+}
+
+.field input {
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--txt-primary-color);
+
+  padding: 20px;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+}
+
+.field input::placeholder {
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: 400;
+  color: #c0c0c0;
+}
+
+.btn {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 50px;
+}
+
+.txt {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--txt-secondary-color);
+}
+
+.link {
+  font-size: 16px;
+  font-weight: 600;
+  color: #3c5cda;
+  text-decoration: none;
+}
+
+.invalid input {
+  outline: 2px solid rgb(245, 52, 52);
+}

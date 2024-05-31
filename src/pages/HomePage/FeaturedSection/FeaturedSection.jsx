@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { PropertyCard } from "../../../components/PropertyCard/PropertyCard";
 import { useEffect, useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import styles from "./FeaturedSection.module.css";
 
@@ -42,7 +43,16 @@ export const FeaturedSection = () => {
         {error ? <p>Error: {error}</p> : <></>}
 
         {loading ? (
-          <p>Loading...</p>
+          <div className={styles.loading}>
+            <ThreeDots
+              visible={loading}
+              height="100"
+              width="100"
+              color="#3c5cda"
+              radius="9"
+              ariaLabel="three-dots-loading"
+            />
+          </div>
         ) : (
           <div className={styles.card__wrapper}>
             {announcements.map((item) => {

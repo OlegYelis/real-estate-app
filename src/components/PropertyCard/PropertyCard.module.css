@@ -163,3 +163,13 @@
 
   fill: var(--txt-light-color);
 }
+
+.noData {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--txt-light-color);
+
+  text-align: center;
+  position: relative;
+}
