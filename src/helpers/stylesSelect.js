@@ -95,3 +95,21 @@ export const mainStyles = {
     color: isSelected ? "#f4f4f4" : "#2a2a2a",
   }),
 };
+
+export const listStyles = {
+  control: (styles) => ({
+    ...styles,
+    backgroundColor: "white",
+    border: "none",
+    width: "300px",
+    height: "64px",
+    borderRadius: "12px",
+    padding: "0 10px",
+    outline: "none",
+    color: "#2a2a2a",
+  }),
+  option: (styles, { isSelected }) => ({
+    ...styles,
+    color: isSelected ? "#f4f4f4" : "#2a2a2a",
+  }),
+};

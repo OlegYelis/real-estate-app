@@ -1,29 +1,92 @@
 import { useState, useEffect } from "react";
 import { Button } from "../Button/Button";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 import styles from "./FavoriteButton.module.css";
 
 export const FavoriteButton = ({ announcementId, className }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const token = useSelector((state) => state.auth.token);
+  const userId = useSelector((state) => state.auth.userId);
 
   useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    setIsFavorite(favorites.includes(announcementId));
-  }, [announcementId]);
+    const checkFavoriteStatus = async () => {
+      if (token) {
+        try {
+          const response = await axios.get(
+            `http://localhost:3000/favorite/${announcementId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+              params: {
+                userId: userId,
+              },
+            }
+          );
+          setIsFavorite(response.data.isFavorite);
+        } catch (error) {
+          console.error("Error checking favorite status:", error);
+        }
+      } else {
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        setIsFavorite(favorites.includes(announcementId));
+      }
+    };
 
-  const handleFavoriteClick = (evt) => {
+    checkFavoriteStatus();
+  }, [announcementId, token, userId]);
+
+  const handleFavoriteClick = async (evt) => {
     evt.stopPropagation();
     evt.preventDefault();
-    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-    if (favorites.includes(announcementId)) {
-      favorites = favorites.filter((id) => id !== announcementId);
-      setIsFavorite(false);
+    if (token) {
+      try {
+        if (isFavorite) {
+          await axios.delete(
+            `http://localhost:3000/favorite/${announcementId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+              data: {
+                userId: userId,
+              },
+            }
+          );
+          Notify.success("Оголошення видалено з обраних");
+        } else {
+          await axios.post(
+            `http://localhost:3000/favorite`,
+            { announcementId, userId },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          Notify.success("Оголошення додано до обраних");
+        }
+        setIsFavorite(!isFavorite);
+      } catch (error) {
+        console.error("Error updating favorite status:", error);
+        Notify.failure("Помилка при оновленні статусу обраного");
+      }
     } else {
-      favorites.push(announcementId);
-      setIsFavorite(true);
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      if (favorites.includes(announcementId)) {
+        favorites = favorites.filter((id) => id !== announcementId);
+        setIsFavorite(false);
+        Notify.success("Оголошення видалено з обраних");
+      } else {
+        favorites.push(announcementId);
+        setIsFavorite(true);
+        Notify.success("Оголошення додано до обраних");
+      }
+      localStorage.setItem("favorites", JSON.stringify(favorites));
     }
-
-    localStorage.setItem("favorites", JSON.stringify(favorites));
   };
 
   return (

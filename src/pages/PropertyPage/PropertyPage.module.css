@@ -4,6 +4,7 @@
 }
 
 .property__main {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -408,6 +409,14 @@
   gap: 16px;
 }
 
+.btn__ok {
+  background-color: #66e966;
+}
+
+.btn__ok:hover {
+  background-color: #5ed65e;
+}
+
 .btn__warning {
   background-color: #ff5549;
   color: var(--txt-light-color);
@@ -433,4 +442,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.pending {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #ffbf00;
+
+  z-index: 100;
 }

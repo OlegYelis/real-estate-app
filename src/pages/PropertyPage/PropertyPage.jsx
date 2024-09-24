@@ -57,6 +57,7 @@ export const PropertyPage = () => {
   const [announcements, setAnnouncements] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const userId = useSelector((state) => state.auth.userId);
+  const userRoleId = useSelector((state) => state.auth.roleId);
 
   useEffect(() => {
     const fetchAnnouncements = async () => {
@@ -123,6 +124,25 @@ export const PropertyPage = () => {
     );
   };
 
+  const handleApprove = async () => {
+    try {
+      await axios.put(
+        `http://localhost:3000/announcements/${id}/approve`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      Notify.success("Оголошення підтверджено");
+      navigate("/profile");
+    } catch (error) {
+      console.error("Error approving announcement:", error);
+      Notify.failure("Помилка при підтвердженні оголошення");
+    }
+  };
+
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -180,11 +200,23 @@ export const PropertyPage = () => {
                   >
                     <span></span> {details.announcementtype}
                   </p>
-                  {userId !== details.user_id && (
-                    <FavoriteButton announcementId={details.announcement_id} />
-                  )}
 
-                  {userId === details.user_id && (
+                  {userRoleId === 2 && details.listingstatus === "Pending" ? (
+                    <div className={styles.user__actions}>
+                      <Button
+                        className={styles.btn__ok}
+                        onClick={handleApprove}
+                      >
+                        Підтвердити
+                      </Button>
+                      <Button
+                        onClick={handleDelete}
+                        className={styles.btn__warning}
+                      >
+                        Видалити
+                      </Button>
+                    </div>
+                  ) : userId === details.user_id ? (
                     <div className={styles.user__actions}>
                       <Button onClick={handleEdit}>Редагувати</Button>
                       <Button
@@ -194,6 +226,8 @@ export const PropertyPage = () => {
                         Видалити
                       </Button>
                     </div>
+                  ) : (
+                    <FavoriteButton announcementId={details.announcement_id} />
                   )}
                 </div>
                 <p className={styles.price}>${Math.floor(details.price)}</p>
@@ -270,6 +304,11 @@ export const PropertyPage = () => {
                   <span>Дата створення:</span>{" "}
                   {moment(details.creationdate).format("DD-MM-YYYY HH:mm")}
                 </p>
+                {details.listingstatus === "Pending" ? (
+                  <p className={styles.pending}>Очікує Підтвердження</p>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
             <div className={styles.property__descr}>

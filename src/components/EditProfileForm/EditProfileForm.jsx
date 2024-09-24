@@ -1,4 +1,3 @@
-// components/EditProfileForm/EditProfileForm.js
 import { useState } from "react";
 import axios from "axios";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
@@ -11,10 +10,10 @@ export const EditProfileForm = ({ userData, onClose, onUpdate }) => {
     lastname: userData.lastname,
     phone: userData.phonenumber,
     email: userData.email,
-    profileImageUrl: userData.profileImageUrl,
+    profileImageUrl: userData.profileimageurl || "",
   });
-
   const [errors, setErrors] = useState({});
+  const [imageFile, setImageFile] = useState(null);
 
   const handleInputChange = (evt) => {
     const { name, value } = evt.target;
@@ -28,6 +27,11 @@ export const EditProfileForm = ({ userData, onClose, onUpdate }) => {
 
     setFormData((prevData) => ({ ...prevData, [name]: value }));
     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setImageFile(file);
   };
 
   const handleFormSubmit = async (evt) => {
@@ -57,9 +61,28 @@ export const EditProfileForm = ({ userData, onClose, onUpdate }) => {
     }
 
     try {
+      let profileImageUrl = formData.profileImageUrl;
+
+      if (imageFile) {
+        const imageData = new FormData();
+        imageData.append("image", imageFile);
+
+        const imageResponse = await axios.post(
+          "https://api.imgbb.com/1/upload?key=90620ffdb6fee7a358ac29929d687478",
+          imageData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        profileImageUrl = imageResponse.data.data.url;
+      }
+
       const response = await axios.put(
         "http://localhost:3000/profile",
-        formData,
+        { ...formData, profileImageUrl },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -73,6 +96,11 @@ export const EditProfileForm = ({ userData, onClose, onUpdate }) => {
       Notify.failure("Помилка при оновленні даних");
       console.error("Error updating profile data", error);
     }
+  };
+
+  const handleDeleteImage = () => {
+    setImageFile(null);
+    setFormData((prevData) => ({ ...prevData, profileImageUrl: "" }));
   };
 
   return (
@@ -121,16 +149,60 @@ export const EditProfileForm = ({ userData, onClose, onUpdate }) => {
           onChange={handleInputChange}
         />
       </div>
-      {/* <div className={styles.field}>
-        <label htmlFor="profileImageUrl">Зображення профілю (URL)</label>
-        <input
-          name="profileImageUrl"
-          id="profileImageUrl"
-          type="text"
-          value={formData.profileImageUrl}
-          onChange={handleInputChange}
-        />
-      </div> */}
+      <div className={styles.field}>
+        <label htmlFor="image" className={styles.imageLabel}>
+          Зображення профілю
+        </label>
+        <div className={styles.customFileInput}>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            onChange={handleImageChange}
+            className={styles.imageInput}
+          />
+          <label htmlFor="image" className={styles.customInputLabel}>
+            Завантажити зображення
+          </label>
+        </div>
+        <div className={styles.uploadedImages}>
+          {imageFile && (
+            <div className={styles.uploadedImageWrapper}>
+              <div
+                className={styles.uploadedImage}
+                style={{
+                  backgroundImage: `url('${URL.createObjectURL(imageFile)}')`,
+                }}
+              ></div>
+              <button
+                type="button"
+                className={styles.deleteImageButton}
+                onClick={handleDeleteImage}
+              >
+                &times;
+              </button>
+            </div>
+          )}
+          {!imageFile && formData.profileImageUrl && (
+            <div className={styles.uploadedImageWrapper}>
+              <div
+                className={styles.uploadedImage}
+                style={{
+                  backgroundImage: `url('${formData.profileImageUrl}')`,
+                }}
+              ></div>
+              <button
+                type="button"
+                className={styles.deleteImageButton}
+                onClick={handleDeleteImage}
+              >
+                &times;
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
       <Button type="submit">Зберегти</Button>
     </form>
   );

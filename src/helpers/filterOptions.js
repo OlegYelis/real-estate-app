@@ -26,3 +26,9 @@ export const sortOptions = [
   { value: "v3", label: "Від дорогих до дешевих" },
   { value: "v4", label: "По даті - спочатку нові" },
 ];
+
+export const listOptions = [
+  { value: "pending", label: "Підтвердження оголошень" },
+  { value: "users", label: "Всі користувачі" },
+  { value: "all", label: "Всі активні оголошення" },
+];

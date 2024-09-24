@@ -9,6 +9,7 @@ import { PropertyCard } from "../../components/PropertyCard/PropertyCard";
 import { EditProfileForm } from "../../components/EditProfileForm/EditProfileForm";
 import { AddAnnouncementForm } from "../../components/AnnouncementForm/AnnouncementForm";
 import { Modal } from "../../components/Modal/Modal";
+import { ManagerSection } from "./ManagerSection/ManagerSection";
 import styles from "./ProfilePage.module.css";
 
 export const ProfilePage = () => {
@@ -120,7 +121,7 @@ export const ProfilePage = () => {
               <>
                 <div className={styles.user__descr}>
                   <img
-                    src={userData.profileImageUrl || "images/user_avatar.webp"}
+                    src={userData.profileimageurl || "images/user_avatar.webp"}
                     alt="Profile"
                     width="130"
                     className={styles.profileImage}
@@ -152,29 +153,33 @@ export const ProfilePage = () => {
             )}
           </div>
 
-          <div className={styles.user__announcements}>
-            <div className={styles.announcements__header}>
-              <p className={styles.user__title}>Мої оголошення</p>
-              <Button
-                className={styles.user__btn}
-                onClick={handleAddAnnouncementClick}
-              >
-                Створити Оголошення
-              </Button>
-            </div>
-
-            {userAnnouncements.length === 0 ? (
-              <p className={styles.user__err}>
-                Нажаль ви не створювали оголошень
-              </p>
-            ) : (
-              <div className={styles.announcements__wrapper}>
-                {userAnnouncements.map((item) => (
-                  <PropertyCard key={item.announcement_id} {...item} />
-                ))}
+          {userData?.role_id === 2 ? (
+            <ManagerSection />
+          ) : (
+            <div className={styles.user__announcements}>
+              <div className={styles.announcements__header}>
+                <p className={styles.user__title}>Мої оголошення</p>
+                <Button
+                  className={styles.user__btn}
+                  onClick={handleAddAnnouncementClick}
+                >
+                  Створити Оголошення
+                </Button>
               </div>
-            )}
-          </div>
+
+              {userAnnouncements.length === 0 ? (
+                <p className={styles.user__err}>
+                  Нажаль ви не створювали оголошень
+                </p>
+              ) : (
+                <div className={styles.announcements__wrapper}>
+                  {userAnnouncements.map((item) => (
+                    <PropertyCard key={item.announcement_id} {...item} />
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
 

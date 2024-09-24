@@ -81,8 +81,8 @@ export const Register = () => {
         "http://localhost:3000/register",
         formData
       );
-      const { token, userId } = response.data;
-      dispatch(login({ token, userId }));
+      const { token, userId, roleId } = response.data;
+      dispatch(login({ token, userId, roleId }));
       Notify.success("Реєстрація пройшла успішно");
       navigate("/profile");
     } catch (error) {

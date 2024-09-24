@@ -74,7 +74,9 @@
   color: var(--txt-primary-color);
   width: 340px;
 
-  padding: 10px 0;
+  padding: 10px 5px;
+
+  border-radius: 5px;
 }
 
 .hero__input::placeholder {

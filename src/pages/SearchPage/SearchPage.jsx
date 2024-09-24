@@ -37,7 +37,7 @@ export const SearchPage = () => {
       }
     };
 
-    setTimeout(fetchAnnouncements, 500);
+    fetchAnnouncements();
   }, [location.search]);
 
   const handlePageChange = (newPage) => {
